@@ -1,6 +1,6 @@
 {
   "name": "generator-uebersicht",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Übersicht widget builder generator",
   "homepage": "https://github.com/dudeofawesome/generator-uebersicht",
   "author": "Louis Orleans <louis@orleans.io> (http://orleans.io/)",
@@ -14,7 +14,6 @@
     "widget",
     "yeoman",
     "generator",
-    "yeoman-generator",
     "yeoman-generator"
   ],
   "scripts": {

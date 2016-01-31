@@ -1,0 +1,32 @@
+// Make sure to use only "DOUBLE QUOTES" throughout your SCSS
+
+$color: rgb(255, 255, 255);
+
+#{{widgetName}}-widget-index-js {
+    top: 550px;
+    left: 10px;
+    width: 500px;
+    color: $color;
+}
+
+.{{widgetName}}-widget {
+    opacity: 1;
+    -webkit-transition: opacity 0.5s;
+}
+
+#epoch-time {
+    content: " ";
+    width: 100px;
+    height: 50px;
+    margin-left: -50px;
+    background-image: url("{{widgetName}}.widget/images/clear-day.png");
+    background-size: contain;
+}
+
+.prepare-loading {
+    transition: opacity 0.5s;
+}
+
+.loading {
+    opacity: 0;
+}
