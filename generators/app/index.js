@@ -17,7 +17,7 @@ module.exports = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'widgetName',
                 message: 'Your widget name (no special characters)',
-                default: this.appname,
+                default: this.appname.split(' ').join('-'),
                 validate: function (input) {
                     var valid = input.match(new RegExp('^[A-Za-z][A-Za-z0-9-]*$')) !== null;
                     return (valid) ? true : 'Must begin with a letter, and contain only alpha-numeric or dashes';
