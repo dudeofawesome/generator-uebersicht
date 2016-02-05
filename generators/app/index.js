@@ -65,7 +65,7 @@ module.exports = yeoman.generators.Base.extend({
         var dotFiles = ['bowerrc', 'gitignore', 'jscsrc', 'jshintignore', 'scss-lint.yml'];
         for (var i in dotFiles) {
             this.fs.copy(
-                this.templatePath('.' + dotFiles[i]),
+                this.templatePath('_.' + dotFiles[i]),
                 this.destinationPath('.' + dotFiles[i])
             );
         }
