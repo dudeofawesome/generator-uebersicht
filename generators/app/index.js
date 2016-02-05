@@ -7,7 +7,7 @@ module.exports = yeoman.generators.Base.extend({
     prompting: function () {
         var done = this.async();
 
-    // Have Yeoman greet the user.
+        // Have Yeoman greet the user.
         this.log(yosay(
             'Welcome to the ' + chalk.red('Übersicht widget') + ' generator!'
         ));
@@ -16,8 +16,12 @@ module.exports = yeoman.generators.Base.extend({
             {
                 type: 'input',
                 name: 'widgetName',
-                message: 'Your widget name',
-                default: this.appname
+                message: 'Your widget name (no special characters)',
+                default: this.appname,
+                validate: function (input) {
+                    var valid = input.match(new RegExp('^[A-Za-z][A-Za-z0-9-]*$')) !== null;
+                    return (valid) ? true : 'Must begin with a letter, and contain only alpha-numeric or dashes';
+                }
             },
             {
                 type: 'input',
@@ -40,19 +44,19 @@ module.exports = yeoman.generators.Base.extend({
                 type: 'input',
                 name: 'githubUsername',
                 message: 'Your Github username',
-                default: this.user.github.username()
+                default: this.user.github.username(),
+                store: true
             },
             {
                 type: 'input',
                 name: 'license',
-                message: 'License (ISC)'
+                message: 'License',
+                default: 'GPL-2.0'
             }
         ];
 
         this.prompt(prompts, function (props) {
             this.props = props;
-            // To access props later use this.props.someOption;
-
             done();
         }.bind(this));
     },
