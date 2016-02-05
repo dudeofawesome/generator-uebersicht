@@ -1,12 +1,18 @@
 // Make sure to use only "DOUBLE QUOTES" throughout your SCSS
 
-$color: rgb(255, 255, 255);
+// ##### ################## BEGIN SETTINGS #########################
+$color: rgba(255, 255, 255, 1); // Widget color and transparancy   #
+$x: 10px; // X Position                                            #
+$y: 10px; // Y Position                                            #
+$width: 455px; // Width                                            #
+// ######################## BEGIN SETTINGS #########################
 
 #{{widgetName}}-widget-index-js {
-    top: 550px;
-    left: 10px;
-    width: 500px;
+    top: $x;
+    left: $y;
+    width: $width;
     color: $color;
+    text-align: center;
 }
 
 .{{widgetName}}-widget {

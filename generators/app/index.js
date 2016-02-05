@@ -94,7 +94,6 @@ module.exports = yeoman.generators.Base.extend({
         ];
         for (i in responseFiles) {
             for (var j in responseFiles[i].responses) {
-                this.log('Replacing ' + responseFiles[i].responses[j] + ' in ' + responseFiles[i].path);
                 var file = responseFiles[i].file ? responseFiles[i].file : this.fs.read(this.templatePath(responseFiles[i].path));
                 file = file.split('{{' + responseFiles[i].responses[j] + '}}').join(this.props[responseFiles[i].responses[j]]);
                 if (j < responseFiles[i].responses.length - 1) {

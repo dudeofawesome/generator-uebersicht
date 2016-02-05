@@ -7,6 +7,7 @@ var bower;
 var sass;
 var compileIndex;
 var zip;
+var os;
 // var concat;
 
 gulp.task('bower-install', function () {
@@ -88,11 +89,19 @@ gulp.task('zip', function () {
         .pipe(gulp.dest('build'));
 });
 
-gulp.task('watch', function () {
-    gulp.watch('style.scss', ['sass', 'compile-index']);
-    gulp.watch('script.js', ['compile-index']);
-    gulp.watch('index.html', ['compile-index']);
+gulp.task('install-widget', function () {
+    if (!os) {
+        os = require('os');
+    }
+    return gulp.src('build/final/**/*')
+        .pipe(gulp.dest(os.homedir() + '/Library/Application Support/Übersicht/widgets/{{widgetName}}.widget'));
 });
 
-gulp.task('default', ['watch', 'sass', 'copy-resources', 'compile-index']);
+gulp.task('watch', function () {
+    gulp.watch('style.scss', ['sass', 'compile-index', 'install-widget']);
+    gulp.watch('script.js', ['compile-index', 'install-widget']);
+    gulp.watch('index.html', ['compile-index', 'install-widget']);
+});
+
+gulp.task('default', ['watch', 'sass', 'copy-resources', 'compile-index', 'install-widget']);
 gulp.task('build', ['sass', 'copy-resources', 'compile-index', 'zip']);
